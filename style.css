@@ -22,7 +22,7 @@ body {
     background: rgba(0, 0, 0, 0);
     pointer-events: none;
     z-index: 1;
-    transition: background 0.3s ease;
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero {
@@ -42,16 +42,18 @@ body {
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 1px;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
 }
 
 .content {
@@ -64,8 +66,10 @@ body {
     left: 0;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 .content.visible {
@@ -81,74 +85,80 @@ body {
 
 .stat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2.5rem;
 }
 
 .stat-box {
-    background: rgba(248, 249, 250, 0.1);
-    padding: 2rem;
-    border-radius: 10px;
+    background: rgba(248, 249, 250, 0.08);
+    padding: 2.5rem;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
 }
 
 .stat-box:hover {
-    transform: translateY(-5px);
-    background: rgba(248, 249, 250, 0.15);
+    transform: translateY(-8px);
+    background: rgba(248, 249, 250, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .stat-box h3 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #ffffff;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .info-block {
-    max-width: 800px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background: rgba(248, 249, 250, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    max-width: 900px;
+    margin: 5rem auto;
+    padding: 3rem;
+    background: rgba(248, 249, 250, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
 }
 
 h2 {
     color: #ffffff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Add these styles to your existing CSS */
 .video-section {
     max-width: 1200px;
-    margin: 4rem auto;
+    margin: 5rem auto;
     padding: 2rem;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    background: rgba(248, 249, 250, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
+    padding-bottom: 56.25%;
+    background: rgba(248, 249, 250, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .video-container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .video-container iframe {
@@ -157,21 +167,16 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-}
-
-.video-section {
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-radius: 15px;
 }
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     
     .stat-grid {
