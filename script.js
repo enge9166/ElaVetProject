@@ -1,44 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const overlay = document.querySelector('.overlay');
-    const content = document.querySelector('.content');
-    const heroTitle = document.querySelector('.hero h1');
-    const heroSubtitle = document.querySelector('.subtitle');
-    const videoSection = document.querySelector('.video-section');
-    const statistics = document.querySelector('.statistics');
+const sections = document.querySelectorAll('.scroll-section');
+const hero = document.querySelector('.hero');
+const overlay = document.querySelector('.overlay');
 
-    let lastScrollTime = Date.now();
-    let scrollAccumulator = 0;
-    const scrollThreshold = 300;
-    const statsThreshold = 600;
-    const videoThreshold = 900;
-    const throttleDelay = 16;
+window.addEventListener('scroll', checkSections);
 
-    const updateAnimations = (e) => {
-        const currentTime = Date.now();
-        if (currentTime - lastScrollTime < throttleDelay) return;
-        lastScrollTime = currentTime;
+checkSections();
 
-        scrollAccumulator += e.deltaY;
-        scrollAccumulator = Math.min(Math.max(scrollAccumulator, 0), videoThreshold);
+function checkSections() {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    
+    // Handle hero fade
+    const scrollPosition = window.scrollY;
+    const opacity = Math.min(scrollPosition / 300, 0.8);
+    overlay.style.background = `rgba(0, 0, 0, ${opacity})`;
+    
+    if (scrollPosition > 100) {
+        hero.querySelector('h1').style.opacity = '0';
+        hero.querySelector('.subtitle').style.opacity = '0';
+    } else {
+        hero.querySelector('h1').style.opacity = '1';
+        hero.querySelector('.subtitle').style.opacity = '1';
+    }
 
-        const initialProgress = Math.min(scrollAccumulator / scrollThreshold, 1);
-        const statsProgress = Math.max(0, Math.min((scrollAccumulator - scrollThreshold) / (statsThreshold - scrollThreshold), 1));
-        const videoProgress = Math.max(0, (scrollAccumulator - statsThreshold) / (videoThreshold - statsThreshold));
+    // Handle sections animation
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
 
-        requestAnimationFrame(() => {
-            overlay.style.background = `rgba(0, 0, 0, ${initialProgress * 0.9})`;
-            heroTitle.style.opacity = `${1 - initialProgress}`;
-            heroSubtitle.style.opacity = `${1 - initialProgress}`;
-            
-            statistics.style.opacity = statsProgress;
-            statistics.style.transform = `translateY(${20 - (statsProgress * 20)}px)`;
-            
-            videoSection.style.opacity = videoProgress;
-            videoSection.style.transform = `translateY(${20 - (videoProgress * 20)}px)`;
-
-            content.classList.toggle('visible', initialProgress > 0.8);
-        });
-    };
-
-    window.addEventListener('wheel', updateAnimations, { passive: true });
-});
+        if(sectionTop < triggerBottom) {
+            section.classList.add('show');
+        } else {
+            section.classList.remove('show');
+        }
+    });
+}
