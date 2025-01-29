@@ -62,9 +62,44 @@ class ScrollAnimator {
                 section.style.transform = 'translateY(50px)';
             }
         });
+
+        this.sections.forEach((section, index) => {
+            if (section.classList.contains('warning-signs')) {
+                const sectionRect = section.getBoundingClientRect();
+                if (sectionRect.top <= window.innerHeight && sectionRect.bottom >= 0) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            }
+        });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     new ScrollAnimator();
+});
+
+class AccordionHandler {
+    constructor() {
+        this.accordionItems = document.querySelectorAll('.accordion-item');
+        this.init();
+    }
+
+    init() {
+        this.accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            header.addEventListener('click', () => {
+                const currentlyActive = document.querySelector('.accordion-item.active');
+                if (currentlyActive && currentlyActive !== item) {
+                    currentlyActive.classList.remove('active');
+                }
+                item.classList.toggle('active');
+            });
+        });
+    }
+}
+
+// Initialize accordion after DOM content is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new AccordionHandler();
 });

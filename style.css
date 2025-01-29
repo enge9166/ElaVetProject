@@ -181,7 +181,254 @@
     margin: 0 auto;
     justify-content: center;
 }
+.warning-signs {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4rem 2rem;
+}
 
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.resource-accordion {
+    margin-top: 2rem;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f8f9fa;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #ffffff;
+    padding: 0 1.5rem;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px;
+    padding: 1.5rem;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .icon {
+    transform: rotate(45deg);
+}
+
+.help-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.help-link:hover {
+    background: #004d99;
+}
+
+.warning-signs.active {
+    min-height: 100vh;
+    padding-bottom: 100vh; /* Creates extra space for scrolling */
+}
+
+.accordion-container {
+    position: sticky;
+    top: 50px; /* Keeps the accordion visible while scrolling */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.warning-signs {
+    background: #000000;
+    padding: 4rem 2rem;
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #2a2a2a;
+}
+
+.accordion-content {
+    background: #1a1a1a;
+    color: white;
+    padding: 0 1.5rem;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.accordion-item.active .accordion-content {
+    padding: 1.5rem;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    transition: transform 0.3s ease;
+}
+
+.help-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #4a4a4a;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.help-link:hover {
+    background: #5a5a5a;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.warning-signs {
+    background: #000000;
+    padding: 4rem 2rem;
+    min-height: 150vh; /* Makes the section taller */
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 4rem; /* Adds extra space at bottom */
+}
+
+.warning-signs {
+    background: #000000;
+    padding: 4rem 2rem;
+    min-height: 200vh; /* Increased height to fit all content */
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 6rem; /* Extra padding for spacing */
+}
+
+.accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 6rem;
+    overflow: visible; /* Removes the scroll bar */
+    height: auto; /* Allows content to expand naturally */
+}
+
+.warning-signs {
+    background: #000000;
+    padding: 4rem 2rem;
+    min-height: 250vh;
+    overflow: visible; /* Ensures no scrolling at section level */
+}
+
+.accordion-content {
+    overflow: visible; /* Prevents content scroll */
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+    color: white;
+}
+
+/* Hover activation */
+.accordion-item:hover .accordion-content {
+    max-height: 500px;
+    padding: 1.5rem;
+}
+
+.accordion-item:hover .icon {
+    transform: rotate(45deg);
+}
 /* For responsive design */
 @media (max-width: 1024px) {
     .stat-grid {
