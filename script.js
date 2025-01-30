@@ -103,3 +103,22 @@ class AccordionHandler {
 document.addEventListener('DOMContentLoaded', () => {
     new AccordionHandler();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.toggle-btn');
+    const paragraphs = document.querySelectorAll('.toggle-paragraph');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const paragraphNumber = button.dataset.paragraph;
+
+            // Remove active class from all buttons and paragraphs
+            buttons.forEach(btn => btn.classList.remove('active'));
+            paragraphs.forEach(p => p.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding paragraph
+            button.classList.add('active');
+            document.querySelector(`.toggle-paragraph[data-paragraph="${paragraphNumber}"]`).classList.add('active');
+        });
+    });
+});
