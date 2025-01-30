@@ -72,8 +72,18 @@ class ScrollAnimator {
                 }
             }
         });
+
+        const toggleContainer = document.querySelector('.toggle-container');
+        if (toggleContainer) {
+            const containerRect = toggleContainer.getBoundingClientRect();
+            if (containerRect.top <= window.innerHeight * 0.8 && containerRect.bottom >= 0) {
+                toggleContainer.classList.add('active');
+            } else {
+                toggleContainer.classList.remove('active');
+            }
+        }
     }
-}
+    }
 
 document.addEventListener('DOMContentLoaded', () => {
     new ScrollAnimator();
